@@ -1,0 +1,12 @@
+# Write your MySQL query statement below
+METHOD -1 
+SELECT (SELECT DISTINCT salary FROM Employee ORDER BY salary desc
+LIMIT 1 OFFSET 1) AS SecondHighestSalary 
+
+METHOD -2
+
+SELECT MAX(Salary) AS  SecondHighestSalary 
+FROM Employee 
+WHERE salary NOT IN (
+    SELECT MAX(salary) FROM Employee
+)
